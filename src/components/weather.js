@@ -20,20 +20,23 @@ const current = new Date()
 let day = weekday[`${current.getDay()}`]
 let date = `${current.getDate()} ${current.getFullYear()}`
 
-const Weather = ({weatherData}, {locationData}) => (
-        <div className='widget'>
-        <div className='left-panel panel'>
-            <div className='date'>
-                <h1>{day} {date}</h1>
-            </div>
-            <div className='city'>
-                {/* <h2>{locationData.meta}</h2> */}
-            </div>
-            <div className='temp'>
-                <h2>{weatherData.main.temp}</h2>
-            </div>
+const Weather = ({weatherData, locationData}) => {
+  console.log(locationData, ' is location data');
+  return (
+    <div className='widget'>
+      <div className='left-panel panel'>
+        <div className='date'>
+          <h1>{day} {date}</h1>
         </div>
+        <div className='city'>
+          <h2>{locationData.addresses && locationData.addresses[0].city}</h2>
+        </div>
+        <div className='temp'>
+          <h2>{weatherData.main.temp}</h2>
+        </div>
+      </div>
     </div>
-)
+  )
+}
 
 export default Weather
